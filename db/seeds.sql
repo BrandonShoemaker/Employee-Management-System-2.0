@@ -1,4 +1,4 @@
-INSERT INTO department (name)
+INSERT INTO departments (name)
 VALUES
     ('Battlefield'),
     ('wartable'),
@@ -17,7 +17,7 @@ VALUES
     ('Arnold', 'Bennett', 1, 2),
     ('Algernon', 'Blackwood', 2, 3),
     ('Rhoda', 'Broughton', 1, 2),
-    ('Hart', 'Crane', 3),
+    ('Hart', 'Crane', 3, NULL),
     ('Vitorio', 'DeSica', 2, 3),
     ('Wilkie', 'Collins', 2, 3),
     ('Elizabeth', 'Gaskell', 1, 5),

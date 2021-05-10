@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('../../db/connection.js');
-const router = express.router();
+const router = express.Router();
 
 //get request for all department entries in the db
 router.get("/departments", (req, res) => {
@@ -13,6 +13,7 @@ router.get("/departments", (req, res) => {
             return;
         }
         // if no error return all rows
+        console.log(rows);
         res.json({
             message: 'Success',
             data: rows
@@ -39,3 +40,5 @@ router.post('/department', ({body}, res) => {
         });
     });
 });
+
+module.exports = router;

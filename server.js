@@ -1,5 +1,6 @@
 const express = require('express');
 const apiRoutes = require('./routes/apiRoutes/index.js');
+const initialInquire = require('./index.js');
 const app = express();
 const PORT = process.env.PORT || 3003;
 
@@ -14,4 +15,5 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Running on PORT ${PORT}`);
+    initialInquire();
 })
