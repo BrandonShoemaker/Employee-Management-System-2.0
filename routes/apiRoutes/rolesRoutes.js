@@ -22,15 +22,17 @@ router.get('/roles', (req, res) => {
 });
 
 router.post('/role', ({body}, res) => {
-    const sql = `INSERT INTO roles (name, department_id)
-                VALUES (?, ?)`;
-    const params = [body.name, body.department_id];
+    const sql = `INSERT INTO roles (name, salary, department_id)
+                VALUES (?, ?, ?)`;
+    const params = [body.name, body.salary, body.department_id];
 
     db.query(sql, params, (err, result) => {
         if(err){
             res.status(400).json({error: err.message});
             return;
         }
+        const table = cTable.getTable(result)
+        console.log(table);
         res.json({
             message: 'Success',
             data: body,

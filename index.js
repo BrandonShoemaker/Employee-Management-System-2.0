@@ -1,6 +1,7 @@
 const inquire = require('inquirer');
 const {getDepartments, getRoles, getEmployees} = require('./lib/viewing.js');
 const {postDepartment, postRole, postEmployee} = require('./lib/adding.js');
+const {updateEmployeeRole} = require('./lib/updating.js');
 
 module.exports.initialInquire = function(server){
     return inquire
@@ -33,7 +34,7 @@ module.exports.initialInquire = function(server){
                 postEmployee(server);
                 break;
             case 'Update An Employee Role':
-
+                updateEmployeeRole(server);
                 break;
             case 'Exit':
                 server.close();

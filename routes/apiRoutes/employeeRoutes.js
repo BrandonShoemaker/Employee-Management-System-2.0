@@ -49,11 +49,11 @@ router.post('/employee', ({body}, res) => {
 });
 
 // Updates a single employee's role
-router.put('/employee/:id', (req, res) => {
+router.put('/employee/', (req, res) => {
     const sql = `UPDATE employees SET role_id = ?
                 WHERE id = ?`;
 
-    const params = [req.body.role_id, req.params.id];
+    const params = [req.body.role_id, req.body.id];
 
     db.query(sql, params, (err, result) => {
         if(err)
