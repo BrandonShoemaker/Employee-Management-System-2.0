@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('../../db/connection.js');
+const cTable = require('console.table');
 const router = express.Router();
 
 router.get('/roles', (req, res) => {
@@ -11,6 +12,8 @@ router.get('/roles', (req, res) => {
             res.status(400).json({error: err.message});
             return;
         }
+        const table = cTable.getTable(rows)
+        console.log(table);
         res.json({
             message: 'Success',
             data: rows
@@ -18,7 +21,7 @@ router.get('/roles', (req, res) => {
     });
 });
 
-router.post('/roles', ({body}, res) => {
+router.post('/role', ({body}, res) => {
     const sql = `INSERT INTO roles (name, department_id)
                 VALUES (?, ?)`;
     const params = [body.name, body.department_id];

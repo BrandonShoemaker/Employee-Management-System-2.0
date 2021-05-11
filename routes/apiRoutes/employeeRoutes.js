@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('../../db/connection.js');
+const cTable = require('console.table');
 const router = express.Router();
 
 //get request for all employee entries in the db
@@ -15,6 +16,8 @@ router.get("/employees", (req, res) => {
             res.status(400).json({error: err.message});
             return;
         }
+        const table = cTable.getTable(rows)
+        console.log(table);
         // if no error return all rows
         res.json({
             message: 'Success',

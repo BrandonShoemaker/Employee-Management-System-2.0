@@ -1,6 +1,8 @@
 const inquire = require('inquirer');
+const {getDepartments, getRoles, getEmployees} = require('./lib/viewing.js');
+const {postDepartment, postRole, postEmployee} = require('./lib/adding.js');
 
-function initialInquire(){
+module.exports.initialInquire = function(server){
     return inquire
     .prompt([
         {
@@ -13,32 +15,28 @@ function initialInquire(){
     .then(result => {
         switch(result.optionChoice){
             case 'View All Departments':
-                fetch('/api/departments', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
+                getDepartments(server);
                 break;
             case 'View All Roles':
-
+                getRoles(server);
                 break;
             case 'View All Employees':
-
+                getEmployees(server);
                 break;
             case 'Add A Department':
-
+                postDepartment(server);
                 break;
             case 'Add A Role':
-
+                postRole(server);
                 break;
             case 'Add An Employee':
-
+                postEmployee(server);
                 break;
             case 'Update An Employee Role':
 
                 break;
             case 'Exit':
+                server.close();
                 break;
         }
     })
@@ -46,6 +44,3 @@ function initialInquire(){
         console.log(err);
     });
 }
-
-
-module.exports = initialInquire;

@@ -13,7 +13,8 @@ app.use((req, res) => {
     res.status(404).end();
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Running on PORT ${PORT}`);
-    initialInquire();
 })
+
+initialInquire.initialInquire(server);
